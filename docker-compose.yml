@@ -26,7 +26,13 @@ services:
     volumes:
       - ./logstash/pipeline:/usr/share/logstash/pipeline
     ports:
-      - "6000:6000"
+      # JSON inputs
+      - "5000:5000"
+      - "5000:5000/udp"
+      # Syslog inputs
+      - "5140:5140"
+      - "5140:5140/udp"
+      # Control input
       - "9600:9600"
     networks:
       - elk
